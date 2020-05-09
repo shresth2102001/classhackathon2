@@ -29,17 +29,34 @@ def retriveall(data,f_donar,f_amount):
     for i in data:
         print(i)
 if( __name__ == "__main__"):
-    os.chdir("C:\\Users\\91787\\OneDrive\\Desktop\\my programs\\python")
-    data=open("Data.txt",'a+')
-    print("If admin enter 1 and if user enter 2")
-    f_amount=[]
-    f_donar=[]
-    key=int(input())
-    if(key==1):
-        passcode=123456789
-        print("Enter the Passcode :")
-        p=int(input())
-        if(p==passcode):
+    try:
+        os.chdir("C:\\Users\\91787\\OneDrive\\Desktop\\my programs\\python")
+        data=open("Data.txt",'a+')
+        print("If admin enter 1 and if user enter 2")
+        f_amount=[]
+        f_donar=[]
+        key=int(input())
+        if(key==1):
+            passcode=123456789
+            print("Enter the Passcode :")
+            p=int(input())
+            if(p==passcode):
+                print("For add a donation entry 1,retrive a data enter 2, adding the amount to data 3,retriving all data 4 ,EXIT 5")
+                while(1):
+                    comand=int(input())
+                    if(comand==1):
+                        dotate(data,f_donar,f_amount)
+                    elif(comand==2):
+                        retrive(data,f_donar,f_amount)
+                    elif(comand==3):
+                        adddata(data,f_donar,f_amount)
+                    elif(comand==4):
+                        retriveall(data,f_donar,f_amount)
+                    else:
+                        break
+            else:
+                print("------Invalid password-----")
+        elif(key==2):
             print("For add a donation entry 1,retrive a data enter 2, adding the amount to data 3,retriving all data 4 ,EXIT 5")
             while(1):
                 comand=int(input())
@@ -49,22 +66,7 @@ if( __name__ == "__main__"):
                     retrive(data,f_donar,f_amount)
                 elif(comand==3):
                     adddata(data,f_donar,f_amount)
-                elif(comand==4):
-                    retriveall(data,f_donar,f_amount)
                 else:
                     break
-        else:
-            print("------Invalid password-----")
-    elif(key==2):
-        print("For add a donation entry 1,retrive a data enter 2, adding the amount to data 3,retriving all data 4 ,EXIT 5")
-        while(1):
-            comand=int(input())
-            if(comand==1):
-                dotate(data,f_donar,f_amount)
-            elif(comand==2):
-                retrive(data,f_donar,f_amount)
-            elif(comand==3):
-                adddata(data,f_donar,f_amount)
-            else:
-                break
-    
+    except:
+        print("-------------Invalid Input--------------")
